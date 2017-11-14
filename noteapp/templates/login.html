@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h2>로그인</h2>
+  <form method="post">
+    {{ login_form.csrf_token }}
+
+    {{ render_field(login_form.user_id) }}
+    {{ render_field(login_form.user_pw) }}
+
+    <input type="submit" value="로그인">
+  </form>
+{% endblock %}

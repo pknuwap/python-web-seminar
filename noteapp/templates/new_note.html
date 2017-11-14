@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h2>쪽지 보내기</h2>
+  <form method="post">
+    {{ new_note_form.csrf_token }}
+
+    {{ render_field(new_note_form.to) }}
+    {{ render_field(new_note_form.title) }}
+    {{ render_field(new_note_form.content) }}
+
+    <input type="submit" value="보내기">
+  </form>
+{% endblock %}

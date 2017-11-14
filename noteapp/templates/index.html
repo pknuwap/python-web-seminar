@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block body %}
+  {% if 'user' in session %}
+    안녕하세요, {{ session.user.name }}. <a href="{{ url_for('logout') }}">로그아웃</a>
+  {% else %}
+    <a href="{{ url_for('login') }}">로그인</a> 혹은 <a href="{{ url_for('register') }}">회원가입</a>
+  {% endif %}
+{% endblock %}

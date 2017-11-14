@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h2>회원가입</h2>
+  <form method="post">
+    {{ register_form.csrf_token }}
+
+    {{ render_field(register_form.user_id) }}
+    {{ render_field(register_form.user_name) }}
+    {{ render_field(register_form.user_pw) }}
+    {{ render_field(register_form.user_pw_re) }}
+
+    <input type="submit" value="회원가입">
+  </form>
+{% endblock %}

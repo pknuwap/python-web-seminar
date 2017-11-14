@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block body %}
+  {% for note in notes %}
+    <div>
+      {{ note.title }} | {{ note.sender.name }} | {{ note._id.generation_time }}
+    </div>
+  {% endfor %}
+{% endblock %}
