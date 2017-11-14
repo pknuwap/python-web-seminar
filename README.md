@@ -1,3 +1,9 @@
 # WAP Python Web Seminar
 
 WAP 파이썬 웹 세미나 저장소입니다.
+
+## Projects
+
+### [Note App](/noteapp)
+
+기본적인 회원가입/로그인과 쪽지를 주고 받을 수 있는 애플리케이션입니다.
