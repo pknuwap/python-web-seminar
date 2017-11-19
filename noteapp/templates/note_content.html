@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block body %}
+  제목: {{ note.title }}<br/>
+  보낸 사람: {{ note.sender.name }}<br/>
+  받는 사람: {{ note.to.name }}<br/>
+  내용: {{ note.content }}<br/>
+{% endblock %}

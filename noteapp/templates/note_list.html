@@ -3,7 +3,15 @@
 {% block body %}
   {% for note in notes %}
     <div>
-      {{ note.title }} | {{ note.sender.name }} | {{ note._id.generation_time }}
+      <a href="{{ url_for('note_content', id=note._id) }}">
+        {{ note.title }}
+      </a> |
+      {% if box == 'inbox' %}
+        {{ note.sender.name }}
+      {% elif box == 'outbox' %}
+        {{ note.to.name }}
+      {% endif %}
+      | {{ note._id.generation_time }}
     </div>
   {% endfor %}
 {% endblock %}
