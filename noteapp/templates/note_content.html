@@ -7,6 +7,9 @@
     }
   </style>
   <div class="container">
+    {% if session.user.id == note.to.id %}
+      <a class="btn btn-primary" href="{{ url_for('write_note', to=note.sender.id) }}">답장</a>
+    {% endif %}
     <table class="table table-bordered">
       <tbody>
         <tr>

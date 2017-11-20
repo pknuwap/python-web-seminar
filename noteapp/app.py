@@ -109,10 +109,12 @@ def logout():
     flask.session.pop('user', None)
     return flask.redirect(flask.url_for('index'))
 
-@app.route('/note/new', methods=['GET', 'POST'])
+@app.route('/note/new', methods=['GET', 'POST'], defaults={'to': ''})
+@app.route('/note/new/to/<to>', methods=['GET', 'POST'])
 @login_required
-def write_note():
+def write_note(to):
     new_note_form = NewNoteForm()
+    new_note_form.to.data = to
     if flask.request.method == 'POST' and new_note_form.validate():
         to = new_note_form.to.data
         title = new_note_form.title.data
