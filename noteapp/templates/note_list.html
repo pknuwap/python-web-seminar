@@ -8,12 +8,34 @@
   </style>
 
   <div class="container">
+    <div class="page-header">
+      <h1>
+        {% if box == 'inbox' %}
+          받은 쪽지함
+        {% elif box == 'outbox' %}
+          보낸 쪽지함
+        {% endif %}
+      </h1>
+    </div>
+
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
           <th>제목</th>
-          <th>보낸 사람</th>
-          <th>받은 시각</th>
+          <th>
+            {% if box == 'inbox' %}
+              보낸 사람
+            {% elif box == 'outbox' %}
+              받는 사람
+            {% endif %}
+          </th>
+          <th>
+            {% if box == 'inbox' %}
+              받은 시각
+            {% elif box == 'outbox' %}
+              보낸 시각
+            {% endif %}
+          </th>
         </tr>
       </thead>
       <tbody>
