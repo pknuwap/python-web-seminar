@@ -1,23 +1,47 @@
 {% extends "base.html" %}
 
 {% block body %}
-  {% for note in notes %}
-    <div>
-      <a href="{{ url_for('note_content', id=note._id) }}">
-        {{ note.title }}
-      </a> |
-      {% if box == 'inbox' %}
-        {{ note.sender.name }}
-      {% elif box == 'outbox' %}
-        {{ note.to.name }}
-      {% endif %}
-      |
-      <span data-toggle="tooltip"
-            title="{{ arrow.get(note._id.generation_time).to('Asia/Seoul').strftime('%Y-%m-%d %I:%M:%S %p') }}">
-        {{ arrow.get(note._id.generation_time).humanize(locale='ko_KR') }}
-      </span>
-    </div>
-  {% endfor %}
+  <style>
+    th, td {
+      text-align: center;
+    }
+  </style>
+
+  <div class="container">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>제목</th>
+          <th>보낸 사람</th>
+          <th>받은 시각</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for note in notes %}
+          <tr>
+            <td>
+              <a href="{{ url_for('note_content', id=note._id) }}">
+                {{ note.title }}
+              </a>
+            </td>
+            <td>
+              {% if box == 'inbox' %}
+                {{ note.sender.name }}
+              {% elif box == 'outbox' %}
+                {{ note.to.name }}
+              {% endif %}
+            </td>
+            <td>
+              <span data-toggle="tooltip"
+                    title="{{ arrow.get(note._id.generation_time).to('Asia/Seoul').strftime('%Y-%m-%d %I:%M:%S %p') }}">
+                {{ arrow.get(note._id.generation_time).humanize(locale='ko_KR') }}
+              </span>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 
   <script>
     $(function () {
