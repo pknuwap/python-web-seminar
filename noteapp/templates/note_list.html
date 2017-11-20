@@ -11,7 +11,17 @@
       {% elif box == 'outbox' %}
         {{ note.to.name }}
       {% endif %}
-      | {{ arrow.get(note._id.generation_time).humanize(locale='ko_KR') }}
+      |
+      <span data-toggle="tooltip"
+            title="{{ arrow.get(note._id.generation_time).to('Asia/Seoul').strftime('%Y-%m-%d %I:%M:%S %p') }}">
+        {{ arrow.get(note._id.generation_time).humanize(locale='ko_KR') }}
+      </span>
     </div>
   {% endfor %}
+
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
 {% endblock %}
