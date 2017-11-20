@@ -9,6 +9,8 @@ from wtforms.validators import DataRequired, EqualTo
 
 from flask_pymongo import PyMongo
 
+import arrow
+
 class RegisterForm(FlaskForm):
     user_id = StringField('아이디', validators=[DataRequired()])
     user_name = StringField('이름', validators=[DataRequired()])
@@ -149,7 +151,8 @@ def note_list(box):
     else:
         flask.abort(404)
 
-    return flask.render_template('note_list.html', box=box, notes=notes)
+    return flask.render_template('note_list.html', box=box, notes=notes,
+        arrow=arrow)
 
 @app.route('/note/content/<ObjectId:id>')
 @login_required

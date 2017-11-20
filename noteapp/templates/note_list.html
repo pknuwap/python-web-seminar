@@ -11,7 +11,7 @@
       {% elif box == 'outbox' %}
         {{ note.to.name }}
       {% endif %}
-      | {{ note._id.generation_time }}
+      | {{ arrow.get(note._id.generation_time).humanize(locale='ko_KR') }}
     </div>
   {% endfor %}
 {% endblock %}
